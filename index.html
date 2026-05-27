@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,44 +5,82 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PRINCE BHAI ARMY</title>
 
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     *{
       margin:0;
       padding:0;
       box-sizing:border-box;
-      font-family: Arial, sans-serif;
     }
 
     body{
-      background:#000814;
+      font-family:'Poppins', sans-serif;
+      min-height:100vh;
+      background:
+      radial-gradient(circle at top, #0b2447 0%, #06111f 40%, #02060d 100%);
       display:flex;
       justify-content:center;
       align-items:center;
-      min-height:100vh;
       padding:20px;
+      overflow-x:hidden;
     }
 
     .card{
+      position:relative;
       width:100%;
-      max-width:400px;
-      background:#020b18;
-      border:2px solid #0ea5ff;
-      border-radius:30px;
-      padding:35px 25px;
+      max-width:430px;
+      background:rgba(7,16,30,0.95);
+      border:1px solid rgba(72, 196, 255, 0.4);
+      border-radius:32px;
+      padding:35px 28px;
       text-align:center;
+      overflow:hidden;
       box-shadow:
-      0 0 15px #0ea5ff,
-      0 0 40px rgba(14,165,255,0.4);
+      0 0 25px rgba(0,174,255,0.25),
+      0 0 60px rgba(0,174,255,0.12);
+      backdrop-filter:blur(10px);
+    }
+
+    /* Glow effect */
+    .card::before{
+      content:"";
+      position:absolute;
+      width:220px;
+      height:220px;
+      background:#00aaff;
+      filter:blur(120px);
+      top:-120px;
+      right:-80px;
+      opacity:0.35;
+    }
+
+    .badge{
+      display:inline-block;
+      background:rgba(0,183,255,0.12);
+      border:1px solid rgba(0,183,255,0.35);
+      color:#59d3ff;
+      padding:8px 18px;
+      border-radius:50px;
+      font-size:13px;
+      font-weight:600;
+      letter-spacing:1px;
+      margin-bottom:24px;
     }
 
     .profile{
-      width:140px;
-      height:140px;
+      width:145px;
+      height:145px;
+      margin:auto;
       border-radius:50%;
       overflow:hidden;
-      margin:auto;
-      border:5px solid #29b6ff;
-      box-shadow:0 0 20px #29b6ff;
+      border:4px solid #36c8ff;
+      box-shadow:
+      0 0 20px rgba(54,200,255,0.7),
+      0 0 50px rgba(54,200,255,0.3);
+      position:relative;
+      z-index:2;
     }
 
     .profile img{
@@ -53,107 +90,229 @@
     }
 
     h1{
-      color:#29b6ff;
-      margin-top:25px;
+      margin-top:24px;
       font-size:42px;
-      font-weight:bold;
-      text-shadow:0 0 15px #29b6ff;
+      line-height:1.1;
+      color:#ffffff;
+      font-weight:800;
+      letter-spacing:1px;
+    }
+
+    .highlight{
+      color:#3dcfff;
+      text-shadow:0 0 15px rgba(61,207,255,0.8);
     }
 
     .subtitle{
-      color:#4dbdff;
-      margin-top:20px;
-      font-size:18px;
-      line-height:1.6;
-      letter-spacing:3px;
+      margin-top:18px;
+      color:#b7dfff;
+      font-size:15px;
+      line-height:1.8;
+      letter-spacing:1px;
+    }
+
+    .stats{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      margin-top:30px;
+    }
+
+    .stat-box{
+      flex:1;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.06);
+      padding:18px 12px;
+      border-radius:18px;
+    }
+
+    .stat-box h2{
+      color:#3dcfff;
+      font-size:24px;
+      margin-bottom:5px;
+    }
+
+    .stat-box p{
+      color:#d7eaff;
+      font-size:12px;
+      letter-spacing:1px;
     }
 
     .telegram-btn{
-      display:block;
-      margin-top:35px;
-      background:#37bfff;
-      color:#000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      width:100%;
+      margin-top:32px;
+      background:linear-gradient(135deg,#27c3ff,#008cff);
+      color:#fff;
       text-decoration:none;
-      font-size:22px;
-      font-weight:bold;
-      padding:22px;
-      border-radius:20px;
-      box-shadow:0 0 20px #37bfff;
-      transition:0.3s;
+      padding:20px;
+      border-radius:18px;
+      font-size:20px;
+      font-weight:700;
+      transition:0.3s ease;
+      box-shadow:
+      0 10px 30px rgba(0,140,255,0.35);
     }
 
     .telegram-btn:hover{
-      transform:scale(1.03);
+      transform:translateY(-3px) scale(1.02);
+      box-shadow:
+      0 15px 35px rgba(0,140,255,0.45);
+    }
+
+    .telegram-btn span{
+      font-size:24px;
     }
 
     .members{
-      margin-top:35px;
-      color:#fff;
-      font-size:20px;
-      letter-spacing:3px;
-      line-height:1.8;
+      margin-top:28px;
+      color:#ffffff;
+      font-size:15px;
+      line-height:2;
+      letter-spacing:1px;
     }
 
     .rating{
-      margin-top:20px;
+      margin-top:22px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:10px;
       color:#fff;
-      font-size:20px;
-      letter-spacing:2px;
+      font-size:17px;
+      font-weight:600;
     }
 
     .stars{
-      color:gold;
-      font-size:30px;
-      margin-right:10px;
+      color:#ffd700;
+      font-size:26px;
+      letter-spacing:2px;
     }
 
+    .footer-text{
+      margin-top:25px;
+      color:#7fa9c7;
+      font-size:12px;
+      letter-spacing:1px;
+    }
+
+    /* Mobile Responsive */
     @media(max-width:500px){
+
+      body{
+        padding:15px;
+      }
+
+      .card{
+        padding:28px 20px;
+        border-radius:26px;
+      }
+
+      .profile{
+        width:120px;
+        height:120px;
+      }
+
       h1{
-        font-size:34px;
+        font-size:32px;
       }
 
       .subtitle{
-        font-size:16px;
+        font-size:14px;
+        line-height:1.7;
+      }
+
+      .stats{
+        flex-direction:column;
       }
 
       .telegram-btn{
-        font-size:20px;
+        font-size:18px;
+        padding:18px;
+      }
+
+      .members{
+        font-size:14px;
+      }
+
+      .rating{
+        font-size:15px;
+      }
+
+      .stars{
+        font-size:22px;
       }
     }
+
   </style>
 </head>
+
 <body>
 
   <div class="card">
 
-    <div class="profile">
-      <!-- Yahan apni image ka naam lagao -->
-      <img src="prince.jpeg" alt="Profile">
+    <div class="badge">
+      INDIA'S TRUSTED PREDICTION COMMUNITY
     </div>
 
-    <h1>PRINCE BHAI ARMY</h1>
+    <div class="profile">
+      <!-- Image same folder me honi chahiye -->
+      <img src="prince.jpeg" alt="Prince Bhai">
+    </div>
+
+    <h1>
+      <span class="highlight">PRINCE</span><br>
+      BHAI ARMY
+    </h1>
 
     <div class="subtitle">
-      100% NUMBER SURESHOT | PREDICTION KING
+      🔥 100% NUMBER SURESHOT <br>
+      👑 PREDICTION KING OF INDIA
     </div>
 
-    <!-- Telegram Link -->
+    <div class="stats">
+
+      <div class="stat-box">
+        <h2>25K+</h2>
+        <p>ACTIVE MEMBERS</p>
+      </div>
+
+      <div class="stat-box">
+        <h2>4.9★</h2>
+        <p>TRUST RATING</p>
+      </div>
+
+      <div class="stat-box">
+        <h2>24/7</h2>
+        <p>LIVE SUPPORT</p>
+      </div>
+
+    </div>
+
+    <!-- Telegram Button -->
     <a href="https://t.me/+RrASAQEzuZJhMmE1" class="telegram-btn">
+      <span>📲</span>
       JOIN TELEGRAM
     </a>
 
     <div class="members">
-      ★ 25,000+ MEMBERS ACROSS INDIA ★<br><br>
+      ★ 25,000+ MEMBERS ACROSS INDIA ★ <br>
       KING OF COLOUR ANALYSIS
     </div>
 
     <div class="rating">
-      <span class="stars">★★★★</span>
+      <div class="stars">★★★★★</div>
       4.9/5 Rating
+    </div>
+
+    <div class="footer-text">
+      POWERED BY PRINCE BHAI OFFICIAL COMMUNITY
     </div>
 
   </div>
 
 </body>
 </html>
-```
